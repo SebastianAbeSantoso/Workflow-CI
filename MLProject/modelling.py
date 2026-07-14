@@ -27,20 +27,20 @@ X_test, y_test = test[features], test[target]
 
 mlflow.sklearn.autolog()
 
-with mlflow.start_run(run_name="gbr_ci_retrain") as run:
-    model = GradientBoostingRegressor(random_state=42)
-    model.fit(X_train, y_train)
+model = GradientBoostingRegressor(random_state=42)
+model.fit(X_train, y_train)
 
-    preds = model.predict(X_test)
-    mae = mean_absolute_error(y_test, preds)
-    rmse = mean_squared_error(y_test, preds) ** 0.5
-    r2 = r2_score(y_test, preds)
+preds = model.predict(X_test)
+mae = mean_absolute_error(y_test, preds)
+rmse = mean_squared_error(y_test, preds) ** 0.5
+r2 = r2_score(y_test, preds)
 
-    print(f"MAE:  {mae:.4f}")
-    print(f"RMSE: {rmse:.4f}")
-    print(f"R2:   {r2:.4f}")
+print(f"MAE:  {mae:.4f}")
+print(f"RMSE: {rmse:.4f}")
+print(f"R2:   {r2:.4f}")
 
-    with open("run_id.txt", "w") as f:
-        f.write(run.info.run_id)
+run = mlflow.active_run()
+with open("run_id.txt", "w") as f:
+    f.write(run.info.run_id)
 
 print("Training complete.")
