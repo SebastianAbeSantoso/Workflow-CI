@@ -47,7 +47,7 @@ jobs:
         shell: bash -l {0}
         working-directory: MLProject
         run: |
-          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n "${{ secrets.DOCKERHUB_USERNAME }}/msml-wfp-model" --enable-mlserver
+          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n "${{ secrets.DOCKERHUB_USERNAME }}/msml-wfp-model" --env-manager local
 
       - name: Push Docker image
         run: |
