@@ -24,7 +24,7 @@ jobs:
         shell: bash -l {0}
         working-directory: MLProject
         run: |
-          mlflow run . --env-manager=local
+          mlflow run . --env-manager=local --experiment-name msml-ci-retraining
 
       - name: Upload training artifact
         uses: actions/upload-artifact@v4

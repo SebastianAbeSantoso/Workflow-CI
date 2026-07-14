@@ -9,8 +9,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--data_path", type=str, required=True)
 args = parser.parse_args()
 
-mlflow.set_experiment("msml-ci-retraining")
-
 model_df = pd.read_csv(args.data_path)
 model_df['year_month'] = pd.to_datetime(model_df['year_month'])
 
@@ -35,6 +33,10 @@ with mlflow.start_run() as run:
     mae = mean_absolute_error(y_test, preds)
     rmse = mean_squared_error(y_test, preds) ** 0.5
     r2 = r2_score(y_test, preds)
+
+    mlflow.log_metric("mae", mae)
+    mlflow.log_metric("rmse", rmse)
+    mlflow.log_metric("r2", r2)
 
     print(f"MAE:  {mae:.4f}")
     print(f"RMSE: {rmse:.4f}")
