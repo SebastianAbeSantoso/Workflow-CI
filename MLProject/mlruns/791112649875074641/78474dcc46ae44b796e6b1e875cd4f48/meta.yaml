@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow-CI/Workflow-CI/MLProject/mlruns/791112649875074641/78474dcc46ae44b796e6b1e875cd4f48/artifacts
+end_time: 1784030658546
+entry_point_name: ''
+experiment_id: '791112649875074641'
+lifecycle_stage: active
+run_id: 78474dcc46ae44b796e6b1e875cd4f48
+run_name: bustling-ram-940
+run_uuid: 78474dcc46ae44b796e6b1e875cd4f48
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1784030623707
+status: 3
+tags: []
+user_id: runner

@@ -1,0 +1,13 @@
+digest: b61b5ba5
+name: dataset
+profile: '{"num_rows": 39305, "num_elements": 353745}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "lag_1", "required": true},
+  {"type": "double", "name": "lag_2", "required": true}, {"type": "double", "name":
+  "lag_3", "required": true}, {"type": "double", "name": "rolling_avg_3", "required":
+  true}, {"type": "long", "name": "month", "required": true}, {"type": "long", "name":
+  "year", "required": true}, {"type": "long", "name": "province_enc", "required":
+  true}, {"type": "long", "name": "market_enc", "required": true}, {"type": "long",
+  "name": "commodity_enc", "required": true}]}'
+source: '{"tags": {"mlflow.user": "runner", "mlflow.source.name": "modelling.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "e33c6b454e2d90d5c3dbad62f30cf63807faa7d8"}}'
+source_type: code
