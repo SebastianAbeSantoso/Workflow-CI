@@ -1,0 +1,9 @@
+name: msml_project
+conda_env: conda.yaml
+entry_points:
+  main:
+    parameters:
+      data_path:
+        type: str
+        default: "wfpfoodpricesidn_preprocessing.csv"
+    command: "python modelling.py --data_path {data_path}"
