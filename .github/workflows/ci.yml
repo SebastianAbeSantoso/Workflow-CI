@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   train-and-deploy:
     runs-on: ubuntu-latest
@@ -26,11 +29,19 @@ jobs:
         run: |
           mlflow run . --env-manager=local --experiment-name msml-ci-retraining
 
-      - name: Upload training artifact
+      - name: Upload training artifact (Actions storage)
         uses: actions/upload-artifact@v4
         with:
           name: mlflow-run-artifacts
           path: MLProject/mlruns
+
+      - name: Commit trained artifact back to repo
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add MLProject/mlruns MLProject/run_id.txt
+          git commit -m "CI: retrained model artifact [skip ci]" || echo "No changes to commit"
+          git push
 
       - name: Read run ID
         shell: bash -l {0}
